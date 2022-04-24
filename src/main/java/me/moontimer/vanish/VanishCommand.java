@@ -17,7 +17,7 @@ public class VanishCommand implements CommandExecutor {
             player.sendMessage(instance.getPrefix() + "§cDu hast darauf keine Rechte");
             return true;
         }
-        if (args.length == 0) {
+        if (!(args.length == 1)) {
             player.sendMessage(instance.getPrefix() + "§cFalscher Syntax /vanish on/off");
             return true;
         }

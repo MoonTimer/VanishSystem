@@ -2,6 +2,7 @@ name: Vanish
 version: '${project.version}'
 main: me.moontimer.vanish.Vanish
 authors: [ MoonTimer ]
+api-version: 1.16.5
 commands:
   vanish:
     aliases:
