@@ -1,0 +1,8 @@
+name: Vanish
+version: '${project.version}'
+main: me.moontimer.vanish.Vanish
+authors: [ MoonTimer ]
+commands:
+  vanish:
+    aliases:
+      - v
