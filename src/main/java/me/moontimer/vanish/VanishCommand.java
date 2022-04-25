@@ -6,10 +6,13 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 public class VanishCommand implements CommandExecutor {
-    private static Vanish instance = Vanish.getInstance();
+
+    private static final Vanish instance = Vanish.getInstance();
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         Player player = (Player) sender;
@@ -22,17 +25,21 @@ public class VanishCommand implements CommandExecutor {
             return true;
         }
 
-        switch (args[1].toLowerCase(Locale.ROOT)) {
+        switch (args[0].toLowerCase(Locale.ROOT)) {
             case "on":
                 for (Player all : Bukkit.getOnlinePlayers()) {
                     all.hidePlayer(player);
                 }
                 player.sendMessage(instance.getPrefix() + "Du bist nun im Vanish §c(Unsichtbar)");
+                Vanish.vanished.add(player);
+                break;
             case "off":
                 for (Player all : Bukkit.getOnlinePlayers()) {
                     all.showPlayer(player);
                 }
+                Vanish.vanished.remove(player);
                 player.sendMessage(instance.getPrefix() + "Du bist nun nicht mehr im Vanish §c(Sichtbar)");
+                break;
         }
         return false;
     }
